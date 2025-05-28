@@ -1,6 +1,6 @@
 package org.example.domain;
 
-import org.example.web.dto.VeiculoResponse;
+
 
 public class Veiculo {
     private Long id;
@@ -71,8 +71,8 @@ public class Veiculo {
         this.preco = preco;
     }
 
-    public VeiculoResponse fromEntity(Veiculo veiculo){
+   /* public VeiculoResponse fromEntity(Veiculo veiculo){
         return new VeiculoResponse(modelo, fabricante, ano,
                 preco);
-    }
+    }*/
 }
