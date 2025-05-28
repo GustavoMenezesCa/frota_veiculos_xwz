@@ -71,20 +71,6 @@ CREATE TABLE IF NOT EXISTS public.moto (
 ALTER TABLE IF EXISTS public.moto OWNER TO postgres;
 ```
 
-## Integração com o Frontend
-
-- A comunicação com o backend é feita via Axios.
-- **Certifique-se de configurar a porta fixa `5590` no Live Server**.  
-  Para isso:
-  - Vá em "Configurações" do Live Server (VS Code)
-  - Busque por `Custom Browser` e configure `"liveServer.settings.port": 5590` no `settings.json`
-  - Ou defina pela interface a porta 5590 antes de iniciar o servidor
-
-> Isso garante compatibilidade com as URLs liberadas no CORS:
-```java
-.addAllowedOrigins("http://localhost:5590", "http://127.0.0.1:5590")
-```
-
 - A base URL para chamadas Axios deve ser:
 ```
 http://localhost:8080
