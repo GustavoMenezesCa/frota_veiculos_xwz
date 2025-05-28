@@ -37,4 +37,13 @@ public class CarroService {
             throw new RuntimeException(e);
         }
     }
+
+    public Carro atualizarCarro(Carro carro, CarroCadastroForm carroCadastroForm){
+        carro.atualizaDados(carroCadastroForm);
+        return carroDAO.atualizarCarro(carro);
+    }
+
+    public Carro findByid(Long id){
+        return carroDAO.buscarPorId(id).orElseThrow();
+    }
 }

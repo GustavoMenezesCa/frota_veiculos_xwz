@@ -5,10 +5,7 @@ import org.example.service.CarroService;
 import org.example.web.dto.CarroCadastroForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -33,4 +30,14 @@ public class CarroController {
 
         return ResponseEntity.status(HttpStatus.OK).body(carro);
     }
+
+    @PutMapping("/atualizarVeiculo/{id}")
+    public ResponseEntity<Carro> atualizarVeiculo(@PathVariable(value = "id") Long id,
+                                                  @RequestBody CarroCadastroForm carroCadastroForm){
+
+        Carro carro = carroService.findByid(id);
+        Carro carroSalvo = carroService.atualizarCarro(carro, carroCadastroForm);
+        return ResponseEntity.status(HttpStatus.OK).body(carro);
+    }
+
 }
