@@ -4,6 +4,7 @@ package org.example.dao.impl;
 import org.example.dao.CarroDAO;
 import org.example.domain.Carro;
 import org.example.domain.TipoCombustivel;
+import org.example.domain.Veiculo;
 import org.springframework.context.annotation.Configuration;
 
 import java.sql.*;
@@ -114,6 +115,9 @@ public class CarroDAOImpl implements CarroDAO {
         List<Object> params = new ArrayList<>();
         List<String> conditions = new ArrayList<>();
 
+        // Adiciona condição fixa para tipo_veiculo se você ainda tiver essa coluna e quiser usá-la
+        // conditions.add("v.tipo_veiculo = 'CARRO'"); // Já implícito pelo INNER JOIN com CARRO
+
         if (modeloFiltro != null && !modeloFiltro.isEmpty()) {
             conditions.add("v.modelo ILIKE ?");
             params.add("%" + modeloFiltro + "%");
@@ -149,6 +153,7 @@ public class CarroDAOImpl implements CarroDAO {
                     carro.setFabricante(rs.getString("fabricante"));
                     carro.setAno(rs.getInt("ano"));
                     carro.setPreco(rs.getDouble("preco"));
+                    // carro.setTipoVeiculo("CARRO"); // Se o objeto Carro tiver esse campo
                     carro.setCor(rs.getString("cor")); // Se o objeto Carro tiver esse campo
 
                     carro.setQuantPortas(rs.getInt("quantidade_portas"));

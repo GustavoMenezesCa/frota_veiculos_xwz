@@ -42,14 +42,15 @@ public class VeiculoDAOImpl implements VeiculoDAO {
             int affectedRows = pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            throw new SQLException("Erro ao excluir veículo com ID" + id + ": " + e.getMessage(), e);
+            throw new SQLException("Erro ao excluir veículo com ID " + id + ": " + e.getMessage(), e);
         }
     }
+
 
     public List<Veiculo> listarTodos() {
         List<Veiculo> veiculos = new ArrayList<>();
         try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement();
+             Statement stmt = conn.createStatement(); // Query simples sem parâmetros
              ResultSet rs = stmt.executeQuery( "SELECT v.id, v.modelo, v.fabricante, v.ano, v.cor, v.preco, v.tipo_veiculo, " +
                      "c.quantidade_portas, c.tipo_combustivel, m.cilindradas " +
                      "FROM VEICULO v " +
@@ -125,6 +126,7 @@ public class VeiculoDAOImpl implements VeiculoDAO {
                 sqlBuilder.append(hasWhere ? " AND " : " WHERE ");
                 sqlBuilder.append("v.ano = ?");
                 params.add(ano);
+                // hasWhere = true; // não precisa mais
             }
             sqlBuilder.append(" ORDER BY v.id");
 

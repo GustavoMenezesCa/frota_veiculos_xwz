@@ -30,16 +30,6 @@ public class MotoController {
         return ResponseEntity.status(HttpStatus.OK).body(moto);
     }
 
-
-
-    @DeleteMapping("/excluir/{id}")
-    public ResponseEntity<Object> excluirVeiculo(@PathVariable(value = "id") Long id){
-        veiculoService.excluirVeiculo(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
-
-
-
     @PutMapping("/atualizarMoto/{id}")
     public ResponseEntity<Moto> atualizarVeiculo(@PathVariable(value = "id") Long id,
                                                   @RequestBody MotoCadastroForm motoCadastroForm){

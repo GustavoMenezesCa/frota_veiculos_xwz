@@ -3,12 +3,10 @@ package org.example.service;
 import org.example.dao.CarroDAO;
 import org.example.dao.VeiculoDAO;
 import org.example.domain.Carro;
-import org.example.domain.Veiculo;
 import org.example.web.dto.CarroCadastroForm;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-import java.util.List;
 
 @Service
 public class CarroService {
@@ -38,6 +36,9 @@ public class CarroService {
         }
     }
 
+
+
+
     public Carro atualizarCarro(Carro carro, CarroCadastroForm carroCadastroForm){
         carro.atualizaDados(carroCadastroForm);
         return carroDAO.atualizarCarro(carro);
@@ -46,4 +47,5 @@ public class CarroService {
     public Carro findByid(Long id){
         return carroDAO.buscarPorId(id).orElseThrow();
     }
+
 }
