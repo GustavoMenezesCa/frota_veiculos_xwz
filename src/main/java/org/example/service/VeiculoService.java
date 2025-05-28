@@ -31,7 +31,13 @@ public class VeiculoService {
         return veiculoDAO.listarTodos();
     }
 
+    public List<Veiculo> consultarVeiculos(String tipo, String modelo, String cor, Integer ano) {
+        return veiculoDAO.consultarVeiculoFiltrado(tipo, modelo, cor, ano);
+    }
 
+    public Veiculo findById(Long id){
+        return veiculoDAO.buscarPorIdGenerico(id).orElseThrow();
+    }
 
 }
 

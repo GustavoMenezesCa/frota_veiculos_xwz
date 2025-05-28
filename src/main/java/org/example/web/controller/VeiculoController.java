@@ -26,5 +26,32 @@ public class VeiculoController {
     }
 
 
+    @GetMapping("/consultar/todos")
+    public ResponseEntity<List<Veiculo>> listarVeiculos(){
+        List<Veiculo> listaVeiculos = veiculoService.listarVeiculosCadastrados();
+        return ResponseEntity.status(HttpStatus.OK).body(listaVeiculos);
+    }
 
+    @GetMapping("/consultar")
+    public ResponseEntity<List<Veiculo>> consultarVeiculosFiltrados(
+            @RequestParam(name = "tipo", required = false) String tipo,
+            @RequestParam(name = "modelo", required = false) String modelo,
+            @RequestParam(name = "cor", required = false) String cor,
+            @RequestParam(name = "ano", required = false) Integer ano) {
+
+        String tipoFiltro = (tipo != null && !tipo.trim().isEmpty()) ? tipo.trim().toUpperCase() : null;
+        Integer anoFiltro = (ano != null && ano <= 0) ? null : ano;
+
+        List<Veiculo> veiculosFiltrados = veiculoService.consultarVeiculos(tipoFiltro, modelo, cor, anoFiltro);
+
+        return ResponseEntity.status(HttpStatus.OK).body(veiculosFiltrados);
+    }
+
+    @GetMapping("/consultar/{id}")
+    public ResponseEntity<Veiculo> findById(@PathVariable(value = "id") Long id){
+
+        Veiculo veiculo = veiculoService.findById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(veiculo);
+
+    }
 }
