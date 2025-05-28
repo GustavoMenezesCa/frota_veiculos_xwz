@@ -98,9 +98,9 @@ As conexões são feitas diretamente nas DAOs via JDBC:
 
 ```java
 private Connection getConnection() throws SQLException {
-    String urlConexao = "jdbc:postgresql://localhost:5432/empresaXWZ_Prod";
+    String urlConexao = "jdbc:postgresql://localhost:5432/postgres";
     String usuarioDB = "postgres";
-    String senhaDB = "123456";
+    String senhaDB = "12345";
     return DriverManager.getConnection(urlConexao, usuarioDB, senhaDB);
 }
 ```
