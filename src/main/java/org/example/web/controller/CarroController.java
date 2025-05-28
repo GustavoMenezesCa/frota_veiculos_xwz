@@ -31,7 +31,7 @@ public class CarroController {
         return ResponseEntity.status(HttpStatus.OK).body(carro);
     }
 
-    @PutMapping("/atualizarVeiculo/{id}")
+    @PutMapping("/atualizarCarro/{id}")
     public ResponseEntity<Carro> atualizarVeiculo(@PathVariable(value = "id") Long id,
                                                   @RequestBody CarroCadastroForm carroCadastroForm){
 
