@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XWZ - Sistema de Gerenciamento de Veículos</title>
+  <link rel="stylesheet" href="css/normalize.css"> 
+  <link rel="stylesheet" href="css/style.css">   
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>XWZ</h1>
+      <p>Sistema de Gerenciamento de Veículos</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controles">
+      <div class="filtros-container">
+        <button id="btn-filtrar" class="btn btn-secundario">Filtros</button>
+        <div class="filtros">
+          <h2>Filtros</h2>
+          <div class="grupo-filtro">
+            <label for="filtro-tipo">Tipo:</label>
+            <select id="filtro-tipo">
+              <option value="">Todos</option>
+              <option value="carro">Carros</option>
+              <option value="moto">Motos</option>
+            </select>
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-modelo">Modelo:</label>
+            <input type="text" id="filtro-modelo" placeholder="Digite o modelo...">
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-cor">Cor:</label>
+            <input type="text" id="filtro-cor" placeholder="Digite a cor...">
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-ano">Ano:</label>
+            <input type="number" id="filtro-ano" placeholder="Digite o ano...">
+          </div>
+          <button id="limpar-filtros" class="btn btn-secundario">Limpar Filtros</button>
+        </div>
+      </div>
+      <button id="btn-cadastrar" class="btn btn-primario">Cadastrar Veículo</button>
+    </section>
+
+    <section class="lista-veiculos">
+
+    </section>
+  </main>
+  <div id="modal-formulario" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar-modal">×</span>
+      <h2 id="titulo-formulario">Cadastrar Veículo</h2>
+      <form id="form-veiculo">
+        <input type="hidden" id="id-veiculo">
+
+        <div class="form-grupo">
+          <label for="tipo-veiculo">Tipo de Veículo:</label>
+          <select id="tipo-veiculo" required>
+            <option value="">Selecione...</option>
+            <option value="carro">Carro</option>
+            <option value="moto">Moto</option>
+          </select>
+        </div>
+
+        <div class="form-grupo">
+          <label for="modelo">Modelo:</label>
+          <input type="text" id="modelo" required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="fabricante">Fabricante:</label>
+          <input type="text" id="fabricante" required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="ano">Ano:</label>
+          <input type="number" id="ano" min="1900" max="2100" required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="preco">Preço:</label>
+          <input type="number" id="preco" min="0" step="0.01" required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="cor">Cor:</label>
+          <input type="text" id="cor" required>
+        </div>
+
+        <div id="campos-carro" class="campos-especificos" style="display: none;">
+          <div class="form-grupo">
+            <label for="portas">Quantidade de Portas:</label>
+            <input type="number" id="portas" min="1" max="5">
+          </div>
+          <div class="form-grupo">
+            <label for="combustivel">Tipo de Combustível:</label>
+            <select id="combustivel">
+              <option value="">Selecione...</option>
+              <option value="gasolina">Gasolina</option>
+              <option value="etanol">Etanol</option>
+              <option value="diesel">Diesel</option>
+              <option value="flex">Flex</option>
+            </select>
+          </div>
+        </div>
+        <div id="campos-moto" class="campos-especificos" style="display: none;">
+          <div class="form-grupo">
+            <label for="cilindrada">Cilindrada (cc):</label>
+            <input type="number" id="cilindrada" min="1">
+          </div>
+        </div>
+
+        <div class="acoes-formulario">
+          <button type="submit" class="btn btn-primario">Salvar</button>
+          <button type="button" id="cancelar-form" class="btn btn-secundario">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div id="modal-confirmacao" class="modal">
+    <div class="modal-conteudo modal-pequeno">
+      <span class="fechar-modal">×</span>
+      <h2>Confirmar Exclusão</h2>
+      <p id="mensagem-confirmacao">Tem certeza que deseja excluir este veículo?</p>
+      <div class="acoes-formulario">
+        <button id="confirmar-exclusao" class="btn btn-perigo">Excluir</button>
+        <button id="cancelar-exclusao" class="btn btn-secundario">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification">
+    <div class="notification-content">
+        <span id="notification-message"></span>
+        <button class="close-notification">×</button>
+    </div>
+  </div>
+
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/models.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/apiService.js"></script> 
+<script src="js/events.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
